@@ -1,19 +1,17 @@
 <?php
+namespace App\Controllers;
 
-class UserController
-{
+class UserController{
     function __construct()
     {
-        echo "<br>Construyendo UserController...";
+        echo "<br>Contruyendo USER controller...";
     }
 
-    function index()
-    {
-        echo "<br>En el INDEX de USER";
+    function index(){
+        require('../views/user/index.php');
     }
 
-    function show()
-    {
+    function show(){
         echo "<br>En el SHOW de USER";
     }
-}// fin de la clase
+}// Fin clase
