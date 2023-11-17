@@ -29,7 +29,7 @@ try {
 
     $statement = $dbh->prepare($sql2);
 
-    // OPCION 1: bindParama -> variable es una referencia.
+    // OPCION 1: bindParam -> variable es una referencia.
     // son valores que recojo $_POST , $_GET, $_COOKIE ,...
     $id = null;
     $nombre = "Esther";
