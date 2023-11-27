@@ -1,34 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
-    <title>Sticky Footer Navbar Template for Bootstrap</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/">
+  <title>Sticky Footer Navbar Template for Bootstrap</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/sticky-footer-navbar.css" rel="stylesheet">
+</head>
 
-    <!-- Custom styles for this template -->
-    <link href="css/sticky-footer-navbar.css" rel="stylesheet">
-  </head>
+<body>
+  <?php require "../views/common/header.php" ?>
+  <main role="main" class="container">
+    <h1>Lista de usuarios</h1>
+    <!-- Enlace para ir a la página de creación de usuario -->
+    
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Email</th>
+        <th>Fecha nacimiento</th>
+        <th><a href="/user/create" class="btn btn-primary">Crear nuevo usuario</a></th>
+      </tr>
 
-  <body>
-    <?php require "../views/common/header.php"?>
-    <!-- Begin page content -->
-    <main role="main" class="container">
-      <h1 class="mt-5">Usuarios de la aplicación</h1>
-      <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added with <code>padding-top: 60px;</code> on the <code>body &gt; .container</code>.</p>
-    </main>
-    <?php require "../views/common/footer.php"?>
+      <?php foreach ($users as $key => $user) { ?>
+        <tr>
+          <td><?php echo ($user->name) ?></td>
+          <td><?php echo ($user->surname) ?></td>
+          <td><?php echo ($user->email) ?></td>
+          <td><?php echo ($user->birthdate) ?></td>
+          <td>
+            <a href="/user/show/<?php echo $user->id ?>" class="btn btn-primary">Ver</a>
+            <a href="/user/edit/<?php echo $user->id ?>" class="btn btn-secondary">Editar</a>
+            <a href="/user/delete/<?php echo $user->id ?>" onclick="return confirm('¿Estas seguro que deseas borrar este usuario?')" class="btn btn-danger">Eliminar</a>
+          </td>
+        </tr>
+      <?php } ?>
+    </table>
+  </main>
+  <?php require "../views/common/footer.php" ?>
+  <?php require "../views/common/scripts.php" ?>
+</body>
 
-
-    <?php require "../views/common/scripts.php"?>
-
-  </body>
 </html>
